@@ -19,4 +19,14 @@ kaggle.json
 
 # OS files
 .DS_Store
-Thumbs.db
+Thumbs.
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Docker
+*.tar
