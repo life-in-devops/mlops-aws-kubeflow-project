@@ -30,3 +30,6 @@ Thumbs.
 
 # Docker
 *.tar
+
+# AWS
+iam-policy.json
