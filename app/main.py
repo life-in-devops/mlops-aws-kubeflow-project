@@ -4,7 +4,7 @@ import pandas as pd
 import sys
 import os
 
-# Fix module path (important for Docker)
+# Fix module path
 sys.path.append(os.path.abspath("."))
 
 from src.preprocess import clean_data
