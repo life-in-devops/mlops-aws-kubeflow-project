@@ -4,16 +4,19 @@ def load_data(path):
     return pd.read_csv(path)
 
 def clean_data(df):
-    df = df.copy()
 
-    # Drop customerID (not useful)
-    df.drop("customerID", axis=1, inplace=True)
+    # Drop customerID safely
+    if "customerID" in df.columns:
+        df.drop("customerID", axis=1, inplace=True)
 
-    # Convert TotalCharges to numeric
-    df["TotalCharges"] = pd.to_numeric(df["TotalCharges"], errors="coerce")
+    # Handle TotalCharges
+    if "TotalCharges" in df.columns:
+        df["TotalCharges"] = pd.to_numeric(df["TotalCharges"], errors="coerce")
+        df["TotalCharges"].fillna(df["TotalCharges"].median(), inplace=True)
 
-    # Drop nulls
-    df.dropna(inplace=True)
+    # Optional: handle target if present
+    if "Churn" in df.columns:
+        df["Churn"] = df["Churn"].astype(str)
 
     return df
 
