@@ -1,6 +1,22 @@
+# Python
 venv/
 __pycache__/
 *.pyc
+
+# Data
 data/
-kaggle.json
+
+# MLflow
+mlruns/
 mlflow.db
+
+# Model artifacts
+model.joblib
+features.joblib
+
+# Kaggle
+kaggle.json
+
+# OS files
+.DS_Store
+Thumbs.db

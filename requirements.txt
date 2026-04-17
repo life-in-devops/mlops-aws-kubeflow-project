@@ -3,3 +3,6 @@ scikit-learn
 fastapi 
 uvicorn 
 boto3
+mlflow 
+joblib 
+seaborn
