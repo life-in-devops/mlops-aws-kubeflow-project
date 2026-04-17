@@ -1,8 +1,5 @@
-pandas 
-scikit-learn 
-fastapi 
-uvicorn 
-boto3
-mlflow 
-joblib 
-seaborn
+fastapi
+uvicorn
+pandas
+scikit-learn
+joblib

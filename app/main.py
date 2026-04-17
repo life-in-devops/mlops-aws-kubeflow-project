@@ -1,8 +1,12 @@
 from fastapi import FastAPI
 import joblib
 import pandas as pd
+import sys
+import os
 
-# from preprocess import clean_data
+# Fix module path (important for Docker)
+sys.path.append(os.path.abspath("."))
+
 from src.preprocess import clean_data
 
 app = FastAPI()
@@ -23,7 +27,7 @@ def predict(data: dict):
     # Convert input to DataFrame
     df = pd.DataFrame([data])
 
-    # Apply same preprocessing
+    # 🔷 Safe preprocessing (important)
     df = clean_data(df)
 
     # Encode
@@ -36,5 +40,6 @@ def predict(data: dict):
     prediction = model.predict(df)[0]
 
     return {
-        "prediction": int(prediction)
+        "prediction": int(prediction),
+        "churn": "Yes" if prediction == 1 else "No"
     }
