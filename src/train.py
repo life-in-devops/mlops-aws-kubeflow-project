@@ -15,7 +15,7 @@ DATA_PATH = "data/churn.csv"
 def train():
 
     # 🔷 MLflow setup
-    mlflow.set_tracking_uri("http://127.0.0.1:5000")
+    mlflow.set_tracking_uri("http://mlflow.mlflow.svc.cluster.local:5000")
     mlflow.set_experiment("churn-prediction")
 
     # 🔷 Load & clean data

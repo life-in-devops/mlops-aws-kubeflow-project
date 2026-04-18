@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: churn-train-
+  namespace: argo
+spec:
+  entrypoint: train
+
+  templates:
+    - name: train
+      container:
+        image: python:3.10
+        command: ["/bin/sh", "-c"]
+        args:
+          - |
+            pip install --no-cache-dir pandas scikit-learn mlflow boto3 joblib && \
+            git clone https://github.com/life-in-devops/mlops-aws-kubeflow-project.git && \
+            cd mlops-aws-kubeflow-project && \
+            python src/train.py
+
+        env:
+          - name: MLFLOW_TRACKING_URI
+            value: http://mlflow.mlflow.svc.cluster.local:5000
